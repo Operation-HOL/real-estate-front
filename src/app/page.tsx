@@ -4,12 +4,12 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { PropertyCard } from "@/components/property-card";
 
 const properties = [
-  { location: "Durbanville", roomType: "Single Room", price: "R 7900" },
-  { location: "Bellville North", roomType: "Single Room", price: "R 8500" },
-  { location: "Delft", roomType: "Single Room", price: "R 6800" },
-  { location: "Someplace", roomType: "Single Room", price: "R 7900" },
-  { location: "Somewhere", roomType: "Single Room", price: "R 8500" },
-  { location: "Elsewhere", roomType: "Single Room", price: "R 6800" },
+  { location: "Durbanville", roomType: "Single Room", price: "R 7900", imageUrl: "https://picsum.photos/id/1001/200/300" },
+  { location: "Bellville North", roomType: "Single Room", price: "R 8500", imageUrl: "https://picsum.photos/id/1002/200/300" },
+  { location: "Delft", roomType: "Single Room", price: "R 6800", imageUrl: "https://picsum.photos/id/1003/200/300" },
+  { location: "Someplace", roomType: "Single Room", price: "R 7900", imageUrl: "https://picsum.photos/id/1004/200/300" },
+  { location: "Somewhere", roomType: "Single Room", price: "R 8500", imageUrl: "https://picsum.photos/id/1005/200/300" },
+  { location: "Elsewhere", roomType: "Single Room", price: "R 6800", imageUrl: "https://picsum.photos/id/1006/200/300" },
 ];
 
 export default function Home() {
