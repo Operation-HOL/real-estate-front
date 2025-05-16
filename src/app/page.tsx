@@ -2,22 +2,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { PropertyCard } from "@/components/property-card";
+import {fetchAllProperties} from "@/lib/data";
 
-const properties = [
-  { location: "Durbanville", roomType: "Single Room", price: "R 7900", imageUrl: "https://picsum.photos/id/1001/200/300" },
-  { location: "Bellville North", roomType: "Single Room", price: "R 8500", imageUrl: "https://picsum.photos/id/1002/200/300" },
-  { location: "Delft", roomType: "Single Room", price: "R 6800", imageUrl: "https://picsum.photos/id/1003/200/300" },
-  { location: "Someplace", roomType: "Single Room", price: "R 7900", imageUrl: "https://picsum.photos/id/1004/200/300" },
-  { location: "Somewhere", roomType: "Single Room", price: "R 8500", imageUrl: "https://picsum.photos/id/1005/200/300" },
-  { location: "Elsewhere", roomType: "Single Room", price: "R 6800", imageUrl: "https://picsum.photos/id/1006/200/300" },
-];
+export default async function Home() {
 
-export default function Home() {
+    // Getting all properties from the server.
+  const properties = await fetchAllProperties();
+
+
   return (
       <div className="max-w-6xl mx-auto px-4 py-6 space-y-6">
         {/* Header */}
         <header className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-primary">Property Link</h1>
+          <h1 className="text-2xl font-bold text-primary">Caprock</h1>
           <div className="space-x-2">
             <Button variant="outline">Login</Button>
             <Button>Signup</Button>
@@ -44,9 +41,9 @@ export default function Home() {
 
         {/* Listings */}
         <section className="space-y-4">
-          <h3 className="text-lg font-semibold">Frequently Viewed Places!</h3>
+          <h3 className="text-lg text-center font-semibold">View our available properties!</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {properties.map((prop, i) => (
+            {properties.map((prop: any, i: number) => (
                 <PropertyCard key={i} {...prop} />
             ))}
           </div>
@@ -54,7 +51,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="text-center text-muted-foreground py-6 text-sm">
-          © 2023 Property Link, Inc.
+          © 2025 Caprock, Inc.
         </footer>
       </div>
   );
