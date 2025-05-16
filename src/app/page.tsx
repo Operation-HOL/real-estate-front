@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { PropertyCard } from "@/components/property-card";
 import {fetchAllProperties} from "@/lib/data";
+import {searchProperties} from "@/lib/server-actions";
 
 export default async function Home() {
 
