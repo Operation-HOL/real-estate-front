@@ -24,17 +24,17 @@ export default function Home() {
         fetchProperties().then(null);
     }, []);
 
-    const handleSearch = async (query: string) => {
-        setLoading(true);
-        const searchResults = await searchProperties(query).then(null);
-        console.log(searchResults);
-        setData(searchResults.content);
-        setLoading(false);
-    };
+    // const handleSearch = async (query: string) => {
+    //     setLoading(true);
+    //     const searchResults = await searchProperties(query).then(null);
+    //     console.log(searchResults);
+    //     setData(searchResults.content);
+    //     setLoading(false);
+    // };
 
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-6 space-y-6">
+        <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
             {/* Header */}
             <header className="flex justify-between items-center">
                 <h1 className="text-2xl font-bold text-primary">Caprock</h1>
@@ -48,7 +48,8 @@ export default function Home() {
             <section className="text-center space-y-4">
                 <h2 className="text-xl font-semibold">Find Your Place!</h2>
                 <div className="flex flex-col md:flex-row justify-center gap-4">
-                    <SearchComponent onSearch={handleSearch} />
+                    {/*<SearchComponent onSearch={handleSearch} />*/}
+                    <Input placeholder="Search.." />
                     <Select>
                         <SelectTrigger>
                             <SelectValue placeholder="Room Type" />
