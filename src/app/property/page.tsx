@@ -50,16 +50,16 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row justify-center gap-4">
                     {/*<SearchComponent onSearch={handleSearch} />*/}
                     <Input placeholder="Search.." />
-                    <Select>
-                        <SelectTrigger>
-                            <SelectValue placeholder="Room Type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="single">Single</SelectItem>
-                            <SelectItem value="sharing">Sharing</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <Input placeholder="Price Range" />
+                    {/*<Select>*/}
+                    {/*    <SelectTrigger>*/}
+                    {/*        <SelectValue placeholder="Room Type" />*/}
+                    {/*    </SelectTrigger>*/}
+                    {/*    <SelectContent>*/}
+                    {/*        <SelectItem value="single">Single</SelectItem>*/}
+                    {/*        <SelectItem value="sharing">Sharing</SelectItem>*/}
+                    {/*    </SelectContent>*/}
+                    {/*</Select>*/}
+                    {/*<Input placeholder="Price Range" />*/}
                 </div>
             </section>
 
