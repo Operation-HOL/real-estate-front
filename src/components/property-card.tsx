@@ -4,6 +4,7 @@ import Link from "next/link";
 import {Bookmark, HeartRounded} from "untitledui-js-base";
 import React from "react";
 import {formatCurrency} from "@/lib/utils";
+import {Badge} from "@/components/ui/badge";
 
 type PropertyCardProps = {
     id: string;
@@ -32,15 +33,18 @@ export const PropertyCard = ({
 
             {/* Heart Icon */}
             <button onClick={() => {setLiked(!liked);}}
-                    className="absolute bg-gray-100 opacity-70 p-2 rounded-full top-4 right-4 z-10">
+                    className="absolute bg-gray-100 opacity-70 p-2 rounded-full top-4 right-3 z-10">
                 <HeartRounded size="20" className={`${ liked ? 'fill-red-500 text-red-500' : 'text-black ' } transition-colors cursor-pointer`}/>
             </button>
 
 
             {/* Image Section */}
             <Link href={`/property/${id}`}>
-                <div className="h-60 w-full bg-muted flex items-center justify-center rounded-2xl">
-
+                <div className="h-60 w-full bg-muted relative items-center justify-center rounded-2xl">
+                    <Badge
+                            className="absolute p-2 bg-green-900 rounded-full bottom-2 right-3 z-10">
+                        4 Units
+                    </Badge>
                     {
                         (images.length > 0) ? (
                                 <img src={images[0]} alt={suburb} className="h-full w-full object-cover rounded-2xl"/>

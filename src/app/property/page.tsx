@@ -12,6 +12,9 @@ import {SearchLG} from "untitledui-js-base";
 import {Separator} from "@/components/ui/separator";
 import {MapPin} from "lucide-react";
 import {ResidenceTypeCombobox} from "@/components/combobox";
+import {InputButtons} from "@/components/inputButtons";
+import {Label} from "@/components/ui/label";
+import {PriceRange} from "@/components/price-range";
 
 export default function Home() {
     const [data, setData] = useState([]);
@@ -38,10 +41,10 @@ export default function Home() {
 
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
+        <main className="flex flex-col max-w-7xl h-screen mx-auto px-4 py-6 space-y-6">
             {/* Header */}
             <header className="flex justify-between items-center">
-                <h1 className="text-3xl font-normal text-primary">OASIS</h1>
+                <h1 className="text-3xl font-normal text-primary">OASES</h1>
                 <div className="space-x-2">
                     <Button variant="outline">Login</Button>
                     <Button>Signup</Button>
@@ -50,30 +53,28 @@ export default function Home() {
 
             <section className="text-center space-y-4">
                 {/*<h2 className="text-xl font-semibold">Find Your Place!</h2>*/}
-                <div className="flex flex-col md:flex-row justify-center gap-4">
-                    {/*<SearchComponent onSearch={handleSearch} />*/}
+                <div className="flex flex-col md:flex-row h-16 justify-center gap-4">
                     {/* Filters section */}
-                    <div className="relative w-full">
-                        <Input
-                            type="text"
-                            placeholder="e.g. Elitha Park"
-                            className="pr-10 py-5" // Add right padding so the text doesn't overlap with the icon
-                        />
-                        <button className="absolute hover:cursor-pointer right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">
-                            <MapPin className="h-4 w-4 text-muted-foreground" />
-                        </button>
+                    <div className="flex flex-col w-full gap-1">
+                        <Label htmlFor="location" className="pl-1 text-gray-600">Location</Label>
+                        <div className="relative w-full">
+                            <Input
+                                id="location"
+                                type="text"
+                                placeholder="e.g. Elitha Park"
+                                className="pr-10 py-5" // Add right padding so the text doesn't overlap with the icon
+                            />
+                            <button className="absolute hover:cursor-pointer right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">
+                                <MapPin className="h-4 w-4 text-muted-foreground" />
+                            </button>
+                        </div>
                     </div>
+                    <PriceRange />
+                    <InputButtons label={"Bedrooms"} />
                     <ResidenceTypeCombobox />
-                    <div className="relative w-full">
-                        <Input
-                            type="text"
-                            placeholder="Search..."
-                            className="pr-10 py-5" // Add right padding so the text doesn't overlap with the icon
-                        />
-                        <button className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">
-                            <SearchLG className="h-4 w-4 text-muted-foreground" />
-                        </button>
-                    </div>
+                    <InputButtons label={"Bathrooms"} />
+                    <Separator orientation={"vertical"} />
+                    <SearchComponent />
                 </div>
                 <Separator className="my-4" />
             </section>
@@ -88,11 +89,6 @@ export default function Home() {
                     ))}
                 </div>
             </section>
-
-            {/* Footer */}
-            <footer className="text-center text-muted-foreground py-6 text-sm">
-                © 2025 Oasis, Inc.
-            </footer>
-        </div>
+        </main>
     );
 }

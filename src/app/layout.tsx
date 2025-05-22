@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Urbanist } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -7,8 +7,8 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const urbanist = Urbanist({
-  variable: "--font-urbanist",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
 })
 
 
@@ -26,9 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${urbanist.className} antialiased`}
+        className={`${geistMono.className} flex flex-col justify-between h-full m-0 antialiased`}
       >
         {children}
+        {/* Footer */}
+        <footer className="text-center w-full bg-black bottom-0 text-muted-foreground py-6 text-sm">
+            © 2025 Oases, Inc.
+        </footer>
       </body>
     </html>
   );
