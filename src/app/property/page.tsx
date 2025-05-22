@@ -8,6 +8,10 @@ import {fetchAllProperties} from "@/lib/data";
 import {useEffect, useState} from "react";
 import {searchProperties} from "@/lib/server-actions";
 import SearchComponent from "@/components/search-component";
+import {SearchLG} from "untitledui-js-base";
+import {Separator} from "@/components/ui/separator";
+import {MapPin} from "lucide-react";
+import {ResidenceTypeCombobox} from "@/components/combobox";
 
 export default function Home() {
     const [data, setData] = useState([]);
@@ -37,35 +41,46 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
             {/* Header */}
             <header className="flex justify-between items-center">
-                <h1 className="text-2xl font-bold text-primary">Caprock</h1>
+                <h1 className="text-3xl font-normal text-primary">OASIS</h1>
                 <div className="space-x-2">
                     <Button variant="outline">Login</Button>
                     <Button>Signup</Button>
                 </div>
             </header>
 
-            {/* Hero */}
             <section className="text-center space-y-4">
-                <h2 className="text-xl font-semibold">Find Your Place!</h2>
+                {/*<h2 className="text-xl font-semibold">Find Your Place!</h2>*/}
                 <div className="flex flex-col md:flex-row justify-center gap-4">
                     {/*<SearchComponent onSearch={handleSearch} />*/}
-                    <Input placeholder="Search.." />
-                    {/*<Select>*/}
-                    {/*    <SelectTrigger>*/}
-                    {/*        <SelectValue placeholder="Room Type" />*/}
-                    {/*    </SelectTrigger>*/}
-                    {/*    <SelectContent>*/}
-                    {/*        <SelectItem value="single">Single</SelectItem>*/}
-                    {/*        <SelectItem value="sharing">Sharing</SelectItem>*/}
-                    {/*    </SelectContent>*/}
-                    {/*</Select>*/}
-                    {/*<Input placeholder="Price Range" />*/}
+                    {/* Filters section */}
+                    <div className="relative w-full">
+                        <Input
+                            type="text"
+                            placeholder="e.g. Elitha Park"
+                            className="pr-10 py-5" // Add right padding so the text doesn't overlap with the icon
+                        />
+                        <button className="absolute hover:cursor-pointer right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">
+                            <MapPin className="h-4 w-4 text-muted-foreground" />
+                        </button>
+                    </div>
+                    <ResidenceTypeCombobox />
+                    <div className="relative w-full">
+                        <Input
+                            type="text"
+                            placeholder="Search..."
+                            className="pr-10 py-5" // Add right padding so the text doesn't overlap with the icon
+                        />
+                        <button className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">
+                            <SearchLG className="h-4 w-4 text-muted-foreground" />
+                        </button>
+                    </div>
                 </div>
+                <Separator className="my-4" />
             </section>
 
             {/* Listings */}
             <section className="space-y-4">
-                <h3 className="text-lg text-center font-semibold">View our available properties!</h3>
+                {/*<h3 className="text-lg text-center font-semibold">View our available properties!</h3>*/}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     { loading ? <p>Loading...</p> :
                         data.map((prop: any, i: number) => (
@@ -76,7 +91,7 @@ export default function Home() {
 
             {/* Footer */}
             <footer className="text-center text-muted-foreground py-6 text-sm">
-                © 2025 Caprock, Inc.
+                © 2025 Oasis, Inc.
             </footer>
         </div>
     );

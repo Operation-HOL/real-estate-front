@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Urbanist } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -7,10 +7,11 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const urbanist = Urbanist({
+  variable: "--font-urbanist",
+})
+
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.className} antialiased`}
+        className={`${urbanist.className} antialiased`}
       >
         {children}
       </body>
