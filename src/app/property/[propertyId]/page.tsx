@@ -26,21 +26,38 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import {fetchAllProperties, fetchProperty} from "@/lib/data";
+import {PropertyCardProps} from "@/lib/types";
+import {formatCurrency} from "@/lib/utils";
+import {Urbanist} from "next/font/google";
+import {GoogleMapsEmbed} from "@next/third-parties/google";
+import {Header} from "@/components/ui/header";
+const urbanist = Urbanist({
+    variable: "--font-urbanist",
+    subsets: ["latin"],
+});
 
-export default function PropertyPage() {
+export default async function PropertyPage({params} : {params: {propertyId: string}}) {
+
+    // fetch property
+
+    const property:PropertyCardProps = await fetchProperty(params.propertyId);
+
+
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container max-w-7xl mx-auto px-4 py-8">
+            <Header />
             {/* Property Header */}
             <div className="flex flex-col md:flex-row justify-between items-start mb-6">
                 <div>
-                    <h1 className="text-2xl md:text-3xl font-bold">Luxury Family Home in Sandton</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold">{property?.title}</h1>
                     <div className="flex items-center mt-2 text-muted-foreground">
                         <MapPin className="h-4 w-4 mr-1" />
-                        <p>10 Rivonia Road, Sandton, Johannesburg</p>
+                        <p>{property.suburb}, {property.city}</p>
                     </div>
                 </div>
                 <div className="mt-4 md:mt-0">
-                    <h2 className="text-2xl md:text-3xl font-bold text-emerald-600">R 4,950,000</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-emerald-600">{formatCurrency(property.monthlyRent)}</h2>
                     <div className="flex gap-2 mt-2">
                         <Button size="sm" variant="outline" className="rounded-full">
                             <Heart className="h-4 w-4 mr-2" />
@@ -59,11 +76,11 @@ export default function PropertyPage() {
                 <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-2 h-[300px] md:h-[500px]">
                     <div className="md:col-span-2 md:row-span-2 relative rounded-l-lg overflow-hidden">
                         <Image
-                            src="/placeholder.svg?height=500&width=600"
+                            src={property.images[0]}
                             alt="Main property view"
                             className="object-cover h-full w-full"
                             width={600}
-                            height={500}
+                            height={400}
                         />
                     </div>
                     <div className="hidden md:block relative">
@@ -120,7 +137,7 @@ export default function PropertyPage() {
             </div>
 
             {/* Property Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3  gap-8">
                 <div className="lg:col-span-2">
                     {/* Key Features */}
                     <div className="flex flex-wrap gap-6 mb-8">
@@ -147,7 +164,7 @@ export default function PropertyPage() {
                     </div>
 
                     {/* Tabs */}
-                    <Tabs defaultValue="overview" className="mb-8">
+                    <Tabs defaultValue="overview" className={`mb-8 ${urbanist.className}`}>
                         <TabsList className="grid w-full grid-cols-3">
                             <TabsTrigger value="overview">Overview</TabsTrigger>
                             <TabsTrigger value="amenities">Amenities</TabsTrigger>
@@ -157,26 +174,16 @@ export default function PropertyPage() {
                             <div className="space-y-4">
                                 <h3 className="text-xl font-semibold">Property Description</h3>
                                 <p>
-                                    This stunning family home in the heart of Sandton offers luxury living with modern finishes
-                                    throughout. The property features an open-plan design with spacious living areas that flow seamlessly
-                                    to a covered patio and landscaped garden with swimming pool.
-                                </p>
-                                <p>
-                                    The gourmet kitchen is fitted with high-end appliances and a central island, perfect for entertaining.
-                                    The main bedroom includes an en-suite bathroom and walk-in closet, while three additional bedrooms
-                                    share two full bathrooms.
-                                </p>
-                                <p>
-                                    Security features include electric fencing, alarm system, and 24-hour security in this sought-after
-                                    estate. The property also has a borehole and inverter system to ensure uninterrupted living during
-                                    load-shedding.
+                                    {
+                                        property.description.split('\n').map((item, index) => (item))
+                                    }
                                 </p>
 
                                 <h3 className="text-xl font-semibold mt-6">Property Details</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="flex justify-between">
                                         <span className="text-muted-foreground">Property Type</span>
-                                        <span className="font-medium">House</span>
+                                        <span className="font-medium">{property.type}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-muted-foreground">Year Built</span>
@@ -186,10 +193,10 @@ export default function PropertyPage() {
                                         <span className="text-muted-foreground">Rates & Taxes</span>
                                         <span className="font-medium">R 3,500 /month</span>
                                     </div>
-                                    <div className="flex justify-between">
-                                        <span className="text-muted-foreground">Levy</span>
-                                        <span className="font-medium">R 2,200 /month</span>
-                                    </div>
+                                    {/*<div className="flex justify-between">*/}
+                                    {/*    <span className="text-muted-foreground">Levy</span>*/}
+                                    {/*    <span className="font-medium">R 2,200 /month</span>*/}
+                                    {/*</div>*/}
                                     <div className="flex justify-between">
                                         <span className="text-muted-foreground">Furnished</span>
                                         <span className="font-medium">No</span>
@@ -276,11 +283,17 @@ export default function PropertyPage() {
                                 <h3 className="text-xl font-semibold">Property Location</h3>
                                 <p className="flex items-center">
                                     <MapPin className="h-5 w-5 mr-2 text-emerald-600" />
-                                    10 Rivonia Road, Sandton, Johannesburg, Gauteng, 2196
+                                    {property.suburb}, {property.city}
                                 </p>
 
                                 <div className="aspect-video bg-muted rounded-lg flex items-center justify-center mt-4">
-                                    <p className="text-muted-foreground">Interactive map would be displayed here</p>
+                                    <GoogleMapsEmbed
+                                        apiKey="AIzaSyDrQhAHPNNeOl7rd9GADAOOzD9IsKgjqmI" // todo: google api env
+                                        height={200}
+                                        width="100%"
+                                        mode="place"
+                                        q="Brooklyn+Bridge,New+York,NY"
+                                    />
                                 </div>
 
                                 <div className="mt-6">

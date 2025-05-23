@@ -18,7 +18,7 @@ export function InputButtons({label}: {label?: string}) {
 
     return (
         <div className="flex w-[30%] flex-col gap-1">
-            {label && <Label htmlFor={label} className="text-gray-600">{label}</Label>}
+            {label && <Label htmlFor={label} className="text-[#444] font-normal">{label}</Label>}
             <div className="relative">
                 <button
                     onClick={decrement}

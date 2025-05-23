@@ -18,7 +18,7 @@ export default function SearchComponent({ onSearch }: SearchComponentProps) {
     return (
         <form onSubmit={handleSubmit} className="w-full">
             <div className="flex flex-col w-full gap-1">
-                <Label htmlFor="search" className="pl-1 text-gray-600">Search</Label>
+                <Label htmlFor="search" className="pl-1 font-normal text-[#444]">Search</Label>
                 <div className="relative w-full">
                     <Input
                         id="search"

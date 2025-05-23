@@ -56,7 +56,7 @@ export function ResidenceTypeCombobox() {
 
     return (
         <div className="flex flex-col gap-1 w-[20%]">
-            <Label className="text-gray-600">Type</Label>
+            <Label className="text-[#444] font-normal">Type</Label>
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                     <Button

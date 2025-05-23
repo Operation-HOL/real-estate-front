@@ -5,22 +5,9 @@ import {Bookmark, HeartRounded} from "untitledui-js-base";
 import React from "react";
 import {formatCurrency} from "@/lib/utils";
 import {Badge} from "@/components/ui/badge";
+import {PropertyCardProps} from "@/lib/types";
 
-type PropertyCardProps = {
-    id: string;
-    title: string;
-    description: string;
-    type: string;
-    monthlyRent: number;
-    city: string;
-    suburb: string;
-    status: string;
-    bedrooms: number;
-    images: string[];
-    bathrooms: number;
-    parkingSpaces: number;
-    listedAt: string;
-};
+
 
 export const PropertyCard = ({
                                  title, monthlyRent, bathrooms, suburb, id, images, city
@@ -57,13 +44,13 @@ export const PropertyCard = ({
             <CardContent className="flex px-2 pt-1 gap-2 flex-col border-none">
 
                 <div className="flex w-full mt-[-20] items-center justify-between">
-                    <h3 className="flex flex-wrap text-[#333] flex-1/3 font-normal">{title}</h3>
-                    <p className="text-primary font-normal">{formatCurrency(monthlyRent)}</p>
+                    <h3 className="flex flex-wrap text-[#444] flex-1/3 font-normal">{title}</h3>
+                    <p className="text-green-800 font-normal">{formatCurrency(monthlyRent)}</p>
                 </div>
 
 
-                <p className="text-sm font-medium tracking-wide text-[#444]">{suburb}, {city}</p>
-                <div className="flex gap-2 text-sm text-gray-950 items-center">
+                <p className="text-sm font-normal tracking-wide text-[#999]">{suburb}, {city}</p>
+                <div className="flex gap-3 text-sm text-gray-950 items-center">
                     <span className="flex items-center border p-1 gap-1 rounded-md">
                         {bathrooms}<Bath size={15}/>
                     </span>
