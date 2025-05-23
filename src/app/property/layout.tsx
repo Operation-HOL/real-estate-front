@@ -1,10 +1,6 @@
-import {Geist_Mono, Geist} from "next/font/google";
+import {Geist} from "next/font/google";
 import type {Metadata} from "next";
 
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 const geistSans = Geist({
     variable: "--font-geist",

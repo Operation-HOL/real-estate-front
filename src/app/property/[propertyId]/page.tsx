@@ -1,3 +1,4 @@
+'use client'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
@@ -32,16 +33,36 @@ import {formatCurrency} from "@/lib/utils";
 import {Urbanist} from "next/font/google";
 import {GoogleMapsEmbed} from "@next/third-parties/google";
 import {Header} from "@/components/ui/header";
+import {notFound} from "next/navigation";
+import {use, useEffect, useState} from "react";
+
 const urbanist = Urbanist({
     variable: "--font-urbanist",
     subsets: ["latin"],
 });
 
-export default async function PropertyPage({params} : {params: {propertyId: string}}) {
+type PageProps = {
+    params: Promise<{propertyId: string}>;
+};
 
+export default function PropertyPage({params} : PageProps) {
     // fetch property
+    const {propertyId}  = use(params);
+    const [property, setProperty] = useState<PropertyCardProps>();
 
-    const property:PropertyCardProps = await fetchProperty(params.propertyId);
+
+    useEffect(() => {
+        const fetchProperties = async () => {
+            const property:PropertyCardProps = await fetchProperty(propertyId);
+            setProperty(property);
+        }
+
+        fetchProperties().then(null);
+    }, []);
+
+    if (!property) {
+        notFound();
+    }
 
 
     return (
