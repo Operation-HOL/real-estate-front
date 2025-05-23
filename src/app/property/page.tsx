@@ -27,6 +27,7 @@ export default function Home() {
         const fetchProperties = async () => {
            const properties = await fetchAllProperties();
            setData(properties);
+           console.log("properties fetched")
            setLoading(false);
         }
 
