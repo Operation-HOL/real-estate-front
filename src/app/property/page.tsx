@@ -16,6 +16,7 @@ import {InputButtons} from "@/components/inputButtons";
 import {Label} from "@/components/ui/label";
 import {PriceRange} from "@/components/price-range";
 import {Header} from "@/components/ui/header";
+import {PropertyCardSkeleton, Skeleton} from "@/components/ui/skeleton";
 
 export default function Home() {
     const [data, setData] = useState([]);
@@ -42,7 +43,7 @@ export default function Home() {
 
 
     return (
-        <main className="flex flex-col max-w-7xl h-screen mx-auto px-4 py-6 space-y-6">
+        <main className="flex flex-col max-w-7xl min-h-screen mx-auto px-4 py-6 space-y-6">
             {/* Header */}
 
             <Header />
@@ -79,14 +80,30 @@ export default function Home() {
             <section className="space-y-4">
                 <aside className="flex items-end justify-between w-full">
                     <div>
-                        <p className="text-2xl">Residence in Khayelitsha</p>
-                        <p className="font-light text-muted-foreground text-sm">We found <span className="text-[#222] font-medium">1</span> property</p>
+
+                        {
+                            loading ?
+                                <div className="flex flex-col gap-1">
+                                    <Skeleton className="h-10 w-100" />
+                                    <Skeleton className="h-4 w-40" />
+                                </div>
+                                 :
+                                <>
+                                    <p className="text-2xl">Residence in Khayelitsha</p>
+                                    <p className="font-light text-muted-foreground text-sm">We found  <span className="text-[#222] font-medium">{data.length}</span> properties</p>
+                                </>
+                        }
                     </div>
                     <p className="">Sort By: <span className="text-[#999] font-light text-sm">Default</span></p>
                 </aside>
                 {/*<h3 className="text-lg text-center font-semibold">View our available properties!</h3>*/}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    { loading ? <p>Loading...</p> :
+                    { loading ?
+                        <div className="flex space-x-3">
+                            <PropertyCardSkeleton />
+                            <PropertyCardSkeleton />
+                            <PropertyCardSkeleton />
+                        </div> :
                         data.map((prop: any, i: number) => (
                         <PropertyCard key={i} {...prop} />
                     ))}
