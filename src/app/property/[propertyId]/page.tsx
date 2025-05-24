@@ -27,7 +27,7 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import {fetchAllProperties, fetchProperty} from "@/lib/data";
+import { fetchProperty } from "@/lib/data";
 import {PropertyCardProps} from "@/lib/types";
 import {formatCurrency} from "@/lib/utils";
 import {Urbanist} from "next/font/google";

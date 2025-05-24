@@ -1,5 +1,4 @@
 import {Input} from "@/components/ui/input";
-import {MapPin} from "lucide-react";
 import {useState} from "react";
 import {Minus, Plus} from "untitledui-js-base";
 import {Label} from "@/components/ui/label";

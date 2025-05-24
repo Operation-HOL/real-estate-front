@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.className} flex flex-col justify-between h-full m-0 antialiased`}
+        className={`${geistSans.className} flex flex-col justify-between m-0 antialiased`}
       >
         {children}
         {/* Footer */}

@@ -4,8 +4,8 @@ import Link from "next/link";
 export function Header() {
     return (
         <main className="flex flex-col w-full">
-            <header className="flex justify-between  items-center">
-                <nav className="flex tracking-wider text-xs gap-2">
+            <header className="flex max-sm:flex-col justify-between  items-center">
+                <nav className="flex max-sm:w-full max-sm:justify-evenly tracking-wider text-xs gap-2">
                     <Link href="/">Home</Link>
                     <Link href="/" className="text-muted-foreground">Properties</Link>
                     <Link href="/" className="text-muted-foreground">About Us</Link>

@@ -1,14 +1,10 @@
 'use client'
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { PropertyCard } from "@/components/property-card";
 import {fetchAllProperties} from "@/lib/data";
 import {useEffect, useState} from "react";
-import {searchProperties} from "@/lib/server-actions";
 import SearchComponent from "@/components/search-component";
-import {SearchLG} from "untitledui-js-base";
 import {Separator} from "@/components/ui/separator";
 import {MapPin} from "lucide-react";
 import {ResidenceTypeCombobox} from "@/components/combobox";
@@ -17,6 +13,7 @@ import {Label} from "@/components/ui/label";
 import {PriceRange} from "@/components/price-range";
 import {Header} from "@/components/ui/header";
 import {PropertyCardSkeleton, Skeleton} from "@/components/ui/skeleton";
+import {Navbar} from "@/components/ui/navbar";
 
 export default function Home() {
     const [data, setData] = useState([]);
@@ -44,14 +41,14 @@ export default function Home() {
 
 
     return (
-        <main className="flex flex-col max-w-7xl min-h-screen mx-auto px-4 py-6 space-y-6">
+        <main className="flex flex-col min-md:max-w-7xl min-h-screen mx-auto px-4 py-6">
             {/* Header */}
 
-            <Header />
-
-            <section className="text-center space-y-4">
-                {/*<h2 className="text-xl font-semibold">Find Your Place!</h2>*/}
-                <div className="flex flex-col font-normal md:flex-row h-16 justify-center gap-4">
+            {/*<Header />*/}
+            <Navbar />
+            {/*This section below is stiff why*/}
+            <section className="flex flex-col text-center">
+                <div className="flex max-lg:flex-wrap flex-col lg:h-16 font-normal md:flex-row justify-center gap-4">
                     {/* Filters section */}
                     <div className="flex flex-col w-full gap-1">
                         <Label htmlFor="location" className="pl-1 font-normal text-gray-600">Looking for</Label>
@@ -67,18 +64,21 @@ export default function Home() {
                             </button>
                         </div>
                     </div>
+                    {/*<div className="flex gap-y-3 justify-evenly md:flex-col w-full">*/}
                     <PriceRange />
                     <InputButtons label={"Bedrooms"} />
+                    {/*</div>*/}
+
                     <ResidenceTypeCombobox />
                     {/*<InputButtons label={"Bathrooms"} />*/}
                     <Separator orientation={"vertical"} />
                     <SearchComponent />
                 </div>
-                <Separator className="my-4" />
+                <Separator className="max-md:hidden my-4" />
             </section>
 
             {/* Listings */}
-            <section className="space-y-4">
+            <section className="flex flex-col space-y-4">
                 <aside className="flex items-end justify-between w-full">
                     <div>
 
@@ -98,13 +98,13 @@ export default function Home() {
                     <p className="">Sort By: <span className="text-[#999] font-light text-sm">Default</span></p>
                 </aside>
                 {/*<h3 className="text-lg text-center font-semibold">View our available properties!</h3>*/}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 max-md:grid-cols-1 md:grid-cols-3 gap-4">
                     { loading ?
-                        <div className="flex space-x-3">
+                        <>
                             <PropertyCardSkeleton />
                             <PropertyCardSkeleton />
                             <PropertyCardSkeleton />
-                        </div> :
+                        </> :
                         data.map((prop: any, i: number) => (
                         <PropertyCard key={i} {...prop} />
                     ))}
