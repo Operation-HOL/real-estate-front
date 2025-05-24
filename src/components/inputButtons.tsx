@@ -16,7 +16,7 @@ export function InputButtons({label}: {label?: string}) {
 
 
     return (
-        <div className="flex w-[30%] flex-col gap-1">
+        <div className="flex flex-col gap-1">
             {label && <Label htmlFor={label} className="text-[#444] font-normal">{label}</Label>}
             <div className="relative">
                 <button
@@ -29,7 +29,7 @@ export function InputButtons({label}: {label?: string}) {
                     type="number"
                     id={label}
                     value={number}
-                    className="px-8 py-5" // Add right padding so the text doesn't overlap with the icon
+                    className="px-8 text-center py-5" // Add right padding so the text doesn't overlap with the icon
                 />
                 <button
                     onClick={increment}

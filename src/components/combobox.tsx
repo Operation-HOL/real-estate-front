@@ -55,7 +55,7 @@ export function ResidenceTypeCombobox() {
     const [value, setValue] = React.useState("")
 
     return (
-        <div className="flex flex-col gap-1 w-[20%]">
+        <div className="flex w-full flex-col gap-1">
             <Label className="text-[#444] font-normal">Type</Label>
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
@@ -63,7 +63,7 @@ export function ResidenceTypeCombobox() {
                         variant="outline"
                         role="combobox"
                         aria-expanded={open}
-                        className="w-[200px] justify-between py-5 text-gray-600"
+                        className="w-full justify-between py-5 text-gray-600"
                     >
                         {value
                             ? frameworks.find((framework) => framework.value === value)?.label
@@ -71,7 +71,7 @@ export function ResidenceTypeCombobox() {
                         <ChevronsUpDown className="opacity-50" />
                     </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-[200px] p-0">
+                <PopoverContent className=" p-0">
                     <Command>
                         <CommandInput placeholder="Residence..." className="h-9" />
                         <CommandList>

@@ -64,12 +64,12 @@ export default function Home() {
                             </button>
                         </div>
                     </div>
-                    {/*<div className="flex gap-y-3 justify-evenly md:flex-col w-full">*/}
-                    <PriceRange />
-                    <InputButtons label={"Bedrooms"} />
-                    {/*</div>*/}
 
-                    <ResidenceTypeCombobox />
+                    <PriceRange />
+                    <div className="flex w-full gap-2">
+                        <InputButtons label={"Bedrooms"} />
+                        <ResidenceTypeCombobox />
+                    </div>
                     {/*<InputButtons label={"Bathrooms"} />*/}
                     <Separator orientation={"vertical"} />
                     <SearchComponent />
@@ -79,7 +79,7 @@ export default function Home() {
 
             {/* Listings */}
             <section className="flex flex-col space-y-4">
-                <aside className="flex items-end justify-between w-full">
+                <aside className="flex items-end my-5 justify-between w-full">
                     <div>
 
                         {
@@ -90,15 +90,15 @@ export default function Home() {
                                 </div>
                                  :
                                 <>
-                                    <p className="text-2xl">Residence in Khayelitsha</p>
+                                    <p className="text-2xl max-sm:text-lg">Residence in Khayelitsha</p>
                                     <p className="font-light text-muted-foreground text-sm">We found  <span className="text-[#222] font-medium">{data.length}</span> properties</p>
                                 </>
                         }
                     </div>
-                    <p className="">Sort By: <span className="text-[#999] font-light text-sm">Default</span></p>
+                    <p className="max-sm:">Sort By: <span className="text-[#999] font-light text-sm">Default</span></p>
                 </aside>
                 {/*<h3 className="text-lg text-center font-semibold">View our available properties!</h3>*/}
-                <div className="grid grid-cols-3 max-md:grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 gap-4">
                     { loading ?
                         <>
                             <PropertyCardSkeleton />
