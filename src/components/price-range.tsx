@@ -1,3 +1,4 @@
+'use client'
 import {Label} from "@/components/ui/label";
 import {Minus} from "untitledui-js-base";
 import {Input} from "@/components/ui/input";
@@ -18,7 +19,7 @@ export function PriceRange() {
         setMaxPrice("")
     }
     return (
-        <div className="flex w-full flex-col gap-1">
+        <div className="flex w-full col-span-4 bg-black flex-col gap-1">
             {/*<Label className="text-[#444] font-normal">Price range</Label>*/}
             <div className="flex gap-2 items-center">
                 <div className="grid w-full grid-cols-2 sm:grid-cols-2 gap-4">
