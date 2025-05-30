@@ -32,10 +32,7 @@ import {PropertyCardProps} from "@/lib/types";
 import {formatCurrency} from "@/lib/utils";
 import {Urbanist} from "next/font/google";
 import {GoogleMapsEmbed} from "@next/third-parties/google";
-import {Header} from "@/components/ui/header";
-import {notFound} from "next/navigation";
-import {Suspense, use, useEffect, useState} from "react";
-import {Skeleton} from "@/components/ui/skeleton";
+import { use, useEffect, useState} from "react";
 import {PropertyPageSkeleton} from "@/components/property-page-skeleton";
 import {Navbar} from "@/components/ui/navbar";
 
@@ -87,7 +84,6 @@ export default function PropertyPage({params} : PageProps) {
         console.log(loading)
         console.log(property)
         return (
-        <Suspense fallback={<PropertyPageSkeleton />}>
             <div className="container max-w-7xl mx-auto px-4 py-8">
                 <Navbar />
                 {/* Property Header */}
@@ -100,11 +96,9 @@ export default function PropertyPage({params} : PageProps) {
                         </div>
                     </div>
                     <div className="mt-4 md:mt-0">
-                        <Suspense fallback={<Skeleton className="w-40 h-10" />}>
                             <h2 className="text-2xl md:text-3xl font-bold text-emerald-600">
                                 {property ? formatCurrency(property.monthlyRent) : "R 0" }
                             </h2>
-                        </Suspense>
                         <div className="flex gap-2 mt-2">
                             <Button size="sm" variant="outline" className="rounded-full">
                                 <Heart className="h-4 w-4 mr-2" />
@@ -461,7 +455,6 @@ export default function PropertyPage({params} : PageProps) {
                     </div>
                 </div>
             </div>
-        </Suspense>
         )
     }
 }
