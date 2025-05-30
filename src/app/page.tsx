@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
-import {SearchLG} from "untitledui-js-base";
 import HeroSearchComponent from "@/components/hero/hero-search-component";
 export default async function Home() {
   return (
