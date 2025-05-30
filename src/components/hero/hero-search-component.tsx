@@ -28,7 +28,7 @@ export default function HeroSearchComponent() {
                                             className="rounded-4xl text-xl w-full border  text-white p-10 pl-10 h-12"
                                         />
                                         <div className="absolute top-0 h-full right-1">
-                                            <button className=" flex items-center self-center gap-3 p-5 rounded-3xl m-2  bg-white">
+                                            <button className=" flex items-center self-center gap-3 p-5 rounded-3xl m-2  bg-white ">
                                                 Search <SearchLG className="" />
                                             </button>
                                         </div>
