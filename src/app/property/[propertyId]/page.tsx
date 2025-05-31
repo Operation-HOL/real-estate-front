@@ -329,7 +329,7 @@ export default function PropertyPage({params} : PageProps) {
 
                                     <div className="aspect-video bg-muted rounded-lg flex items-center justify-center mt-4">
                                         <GoogleMapsEmbed
-                                            apiKey=GOOGLE_API_KEY // todo: google api env
+                                            apiKey={`${process.env.GOOGLE_API_KEY}`} // todo: google api env
                                             height={200}
                                             width="100%"
                                             mode="place"
