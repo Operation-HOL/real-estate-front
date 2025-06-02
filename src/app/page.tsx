@@ -1,5 +1,6 @@
 import Image from "next/image";
 import HeroSearchComponent from "@/components/hero/hero-search-component";
+import CustomLocationSearch from "@/components/hero/custom-location-search";
 export default async function Home() {
   return (
       <main className="w-full bg-[#262626] font-[family-name:var(--font-geist-sans)] h-screen mx-auto space-y-6">
@@ -14,9 +15,6 @@ export default async function Home() {
               <div className="relative z-20 w-full h-full md:pt-20  md:grid-cols-1 max-w-7xl mx-auto px-4">
                   {/*Search Component*/}
                   <HeroSearchComponent />
-
-                  {/* CTA Button */}
-
               </div>
           </section>
       </main>
