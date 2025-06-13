@@ -10,13 +10,13 @@ import {PropertyCardProps} from "@/lib/types";
 
 
 export const PropertyCard = ({
-                                 title, monthlyRent, bathrooms, suburb, id, images, city
+                                 title, monthly_rent, bathrooms, suburb, id, images, city
                              }: PropertyCardProps) => {
     const [liked, setLiked] = React.useState(false);
     const [bookmark, setBookmark] = React.useState(false);
 
     return (
-        <Card className="relative p-[-5] mx-2 outline-none border-none shadow-none cursor-pointer overflow-hidden">
+        <Card className="relative bg-[#FAF0E6]  p-[-5] pb-2 mx-2 outline-none border-none  cursor-pointer overflow-hidden">
 
             {/* Heart Icon */}
             <button onClick={() => {setLiked(!liked);}}
@@ -27,7 +27,7 @@ export const PropertyCard = ({
 
             {/* Image Section */}
             <Link href={`/property/${id}`}>
-                <div className="h-60 w-full bg-muted relative items-center justify-center rounded-2xl">
+                <div className="h-75 w-full bg-muted relative items-center justify-center rounded-2xl">
                     <Badge
                             className="absolute p-2 bg-green-900 rounded-full bottom-2 right-3 z-10">
                         4 Units
@@ -45,7 +45,7 @@ export const PropertyCard = ({
 
                 <div className="flex w-full mt-[-20] items-center justify-between">
                     <h3 className="flex flex-wrap text-[#444] flex-1/3 font-normal">{title}</h3>
-                    <p className="text-green-800 font-normal">{formatCurrency(monthlyRent)}</p>
+                    <p className="text-green-800 font-normal">{formatCurrency(monthly_rent)}</p>
                 </div>
 
 

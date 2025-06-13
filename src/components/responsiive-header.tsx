@@ -57,8 +57,8 @@ export default function ResponsiveHeader() {
 
                     {/* Empty div for grid balance */}
                     <div className="flex gap-3">
-                        <Button className="px-5 font-normal">Login</Button>
-                        <Button className="px-5 font-normal">Signup</Button>
+                        <Button className="px-5 hidden font-normal">Login</Button>
+                        <Button className="px-5 hidden font-normal">Signup</Button>
                     </div>
                 </div>
 

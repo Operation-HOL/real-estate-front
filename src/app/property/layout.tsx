@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function PropertyLayout( {children}: Readonly<{ children: React.ReactNode}> ) {
   return (
-      <main className={`${geistSans.className} antialiased`}>
+      <main className={`${geistSans.className} bg-[#FAF0E6] antialiased`}>
           {children}
       </main>
   );

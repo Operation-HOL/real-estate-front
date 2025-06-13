@@ -3,13 +3,13 @@ export type PropertyCardProps = {
     title: string;
     description: string;
     type: string;
-    monthlyRent: number;
+    monthly_rent: number;
     city: string;
     suburb: string;
     status: string;
     bedrooms: number;
     images: string[];
     bathrooms: number;
-    parkingSpaces: number;
-    listedAt: string;
+    parking_spaces: number;
+    listed_at: string;
 };

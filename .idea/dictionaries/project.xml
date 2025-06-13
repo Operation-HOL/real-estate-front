@@ -2,6 +2,8 @@
   <dictionary name="project">
     <words>
       <w>khayelitsha</w>
+      <w>propertydb</w>
+      <w>sslmode</w>
       <w>testdb</w>
       <w>testuser</w>
       <w>yfnf</w>

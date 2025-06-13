@@ -46,7 +46,6 @@ type PageProps = {
 };
 
 export default function PropertyPage({params} : PageProps) {
-    // fetch property
     const {propertyId}  = use(params);
     const [property, setProperty] = useState<PropertyCardProps | null>(null)
     const [loading, setLoading] = useState(true)
@@ -74,10 +73,6 @@ export default function PropertyPage({params} : PageProps) {
         fetchingProperty().then(r => r)
     }, [propertyId])
 
-    // if (error) {
-    //     notFound()
-    // }
-
     if (loading) {
         return <PropertyPageSkeleton />
     }else{
@@ -97,7 +92,7 @@ export default function PropertyPage({params} : PageProps) {
                     </div>
                     <div className="mt-4 md:mt-0">
                             <h2 className="text-2xl md:text-3xl font-bold text-emerald-600">
-                                {property ? formatCurrency(property.monthlyRent) : "R 0" }
+                                {property ? formatCurrency(property.monthly_rent) : "R 0" }
                             </h2>
                         <div className="flex gap-2 mt-2">
                             <Button size="sm" variant="outline" className="rounded-full">
