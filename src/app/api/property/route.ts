@@ -17,13 +17,14 @@ export async function POST(req: Request) {
             title,
             description,
             type,
-            monthlyRent,
+            monthly_rent,
+            street,
             city,
             suburb,
             status,
             bedrooms,
             bathrooms,
-            parkingSpaces,
+            parking_spaces,
             images,
         } = data;
 
@@ -31,23 +32,24 @@ export async function POST(req: Request) {
 
         const result = await pool.query(
             `INSERT INTO "Property" (
-        title, description, type, "monthly_rent", city, suburb, status,
+        title, description, type, "monthly_rent", street, city, suburb, status,
         bedrooms, bathrooms, "parking_spaces", images, "listed_at"
       ) VALUES (
         $1, $2, $3, $4, $5, $6, $7,
-        $8, $9, $10, $11, $12
+        $8, $9, $10, $11, $12, $13
       ) RETURNING *`,
             [
                 title,
                 description,
                 type,
-                monthlyRent,
+                monthly_rent,
+                street,
                 city,
                 suburb,
                 status,
                 bedrooms,
                 bathrooms,
-                parkingSpaces,
+                parking_spaces,
                 images,
                 listedAt,
             ]
@@ -59,4 +61,12 @@ export async function POST(req: Request) {
         return Response.json({ error: 'Failed to create property' }, { status: 500 });
     }
 }
-export async function DELETE(){}
+// export async function DELETE(){
+//     try {
+//         const result = await pool.query('DELETE FROM "Property"');
+//         return Response.json(result);
+//     } catch (err) {
+//         console.error('Error deleting properties:', err);
+//         return Response.json({ error: 'Failed to delete properties' }, { status: 500 });
+//     }
+// }

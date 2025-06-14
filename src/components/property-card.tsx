@@ -34,7 +34,8 @@ export const PropertyCard = ({
                     </Badge>
                     {
                         (images.length > 0) ? (
-                                <img src={images[0]} alt={suburb} className="h-full w-full object-cover rounded-2xl"/>
+                                <img src={process.env.NEXT_PUBLIC_R2_URL +
+                                    '\n/landlords'+ images[0]} alt={suburb} className="h-full w-full object-cover rounded-2xl"/>
                             ) :
                             (<span className="text-sm text-muted-foreground">Image Coming Soon</span>)}
                 </div>
